@@ -2,6 +2,15 @@
 WDI Project #1
 Jeremy Koulish
 
+User Stories:
+ - As a blackjack player, I want this app to have a smooth gameplay interface and easy-to-spot buttons.
+ -  As someone who doesn't know blackjack, I want a comprehensive rundown of the game rules.
+ - As someone who likes betting, I want to know how much money I have left.
+ - As a game player who likes pretty things, I want to app to be pretty.
+ - As a player of multiple blackjack games in a row, I want to be able to start a new game while keeping my score intact.
+
+
+
 Steps:
 1) Create card Objects
 2) Create blackjack "table":
