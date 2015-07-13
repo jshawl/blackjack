@@ -109,10 +109,10 @@ function cardToString() {
 // on a page.
 //-----------------------------------------------------------------------------
 
-var cardImg0 = new Image(); cardImg0.src= "graphics/cardback.gif";
-var cardImg1 = new Image(); cardImg1.src= "graphics/jack.gif";
-var cardImg2 = new Image(); cardImg2.src= "graphics/queen.gif";
-var cardImg3 = new Image(); cardImg3.src= "graphics/king.gif";
+var cardImg0 = new Image(); cardImg0.src= "cards/graphics/cardback.gif";
+var cardImg1 = new Image(); cardImg1.src= "cards/graphics/jack.gif";
+var cardImg2 = new Image(); cardImg2.src= "cards/graphics/queen.gif";
+var cardImg3 = new Image(); cardImg3.src= "cards/graphics/king.gif";
 
 function cardCreateNode() {
 
@@ -242,11 +242,11 @@ function cardCreateNode() {
   tempNode = document.createElement("IMG");
   tempNode.className = "face";
   if (this.rank == "J")
-    tempNode.src = "graphics/jack.gif";
+    tempNode.src = "cards/graphics/jack.gif";
   if (this.rank == "Q")
-    tempNode.src = "graphics/queen.gif";
+    tempNode.src = "cards/graphics/queen.gif";
   if (this.rank == "K")
-    tempNode.src = "graphics/king.gif";
+    tempNode.src = "cards/graphics/king.gif";
 
   // For face cards, add suit characters to the upper-left and lower-right
   // corners.

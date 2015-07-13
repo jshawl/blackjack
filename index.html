@@ -3,6 +3,7 @@
 <head>
   <title>Blackjack</title>
   <link href="css/styles.css" rel="stylesheet">
+  <script src="cards/cards.js"></script>
 
 </head>
 
@@ -12,19 +13,21 @@
 <h2>a game by Jeremy Koulish</h2>
 </header>
 <div class = "board">
-  <div class="game" id="dealer"></div>
+  <div class="game" id="dealer">
     <h3>Dealer</h3>
-    <object id="dcards"></object>
-
-  <div class="game" id="player"></div>
+    <div id="dcards"></div>
+  </div>
+  <div class="game" id="player">
     <h3>Player</h3>
-    <object id="pcards"></object>
+    <div id="pcards"></div>
+  </div>
 </div>
 <div class="gamebuttons">
-<input type = "button" class="gamebuttons" id="deal" value="Deal"></input>
-<input type = "button" class="gamebuttons" id="hit" value="Hit"></input>
-<input type = "button" class="gamebuttons" id="stand" value="Stand"></input>
-<input type = "button" class="gamebuttons" id="double" value="Double Down"></input>
+  <input type = "button" class="gamebuttons" id="deal" value="Deal"></input>
+  <input type = "button" class="gamebuttons" id="hit" value="Hit"></input>
+  <input type = "button" class="gamebuttons" id="stand" value="Stand"></input>
+  <input type = "button" class="gamebuttons" id="double" value="Double Down"></input>
+  <input type = "button" class="gamebuttons" id="split" value="Split"></input>
 </div>
 
 </body>

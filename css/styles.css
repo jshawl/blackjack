@@ -2,6 +2,7 @@
 
 body {
   background-color: #60a060;
+  margin: 0px;
 }
 
 header {
@@ -12,8 +13,14 @@ header {
   width: 100%;
 }
 
+h1 {
+  margin: 0;
+}
 h3 {
-  color: #D02060;
+  padding: 6px;
+  margin: 0;
+  color: #fff;
+  background-color: rgba(100, 100, 100, 0.8);
 }
 
 .board {
@@ -30,27 +37,45 @@ h3 {
   vertical-align: top;
   text-align: center;
   position: relative;
-  height: 220px;
+  height: 250px;
   width: 927px;
-  display: inline-flex;
+}
+
+p {
+  color: blue;
 }
 
 #dcards, #pcards {
+  position: absolute;
+  margin-left: 350px;
+  margin-top: 20px;
+}
+
+#dealertwo, #playertwo {
+  position: absolute;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+
+/* #dcards, #pcards {
 
   visibility: hidden;
 }
+*/
 
-
-
-.cards {
-    <link href="cards/cards.css" rel="stylesheet">
-}
 
 .gamebuttons {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.gamebuttons input {
+  background: rgba(140, 40, 40, 0.8);;
   text-align: center;
+  color: white;
   padding: 10px;
   margin: 15px;
-  size: 10em;
 }
 
 /* CARD STYLES & SETUP */
