@@ -2,7 +2,24 @@
 WDI Project #1
 Jeremy Koulish
 
-***Instructions***
+Steps:
+1) Create card Objects
+2) Create blackjack "table":
+  Dealer and Player sections; action buttons; money section
+3) Place elements on initial table
+4) Game features in JavaScript:
+  a) deal
+  b) select an option (customize which are available based on player total)
+  c) once player busts or clicks "stay", run dealer turn
+      if "split", need a second hand
+  d) determine winner
+  e) add or subtract $ based on winner, if applicable
+5) Add "rules" readme - ideally clickable from game (in new window???)
+
+
+
+
+***Assignment Instructions***
 Overview
 
 For this project, you have a choice of a few different games / apps:
@@ -80,4 +97,3 @@ Score	Expectations
 1	Meets expectactions, good job!
 2	Exceeds expectations
 This will serve as a helpful overall gauge of whether you met the project goals, but the more important scores are the individual ones above, which can help you identify where to focus your efforts for the next project!
-
