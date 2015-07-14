@@ -12,24 +12,42 @@
   <h1>GA Blackjack</h1>
 <h2>a game by Jeremy Koulish</h2>
 </header>
-<div class = "board">
-  <div class="game" id="dealer">
-    <h3>Dealer</h3>
-    <div id="dcards"></div>
+<main>
+  <section class="money">
+    <div class="balance">
+      <p>You Have: &nbsp;</p>
+      <p id="balamt"></p>
+    </div>
+    <div class="bet">Enter Your Bet: </div>
+    <input type = "number" class="bet" id="betbox" min="10" max="1000" step="10" placeholder="$$$"></input>
+    <input type = "button" class=" bet, gamebuttons" id="deal" value="Deal"></input>
+    <div>
+  </section>
+  <section class = "board">
+    <div class="game" id="dealer">
+      <h3>Dealer</h3>
+      <div id="dcards"></div>
+      <div class="score">
+        <p>Dealer Score:</p>
+        <p id="dealerscore"></p>
+      </div>
+    </div>
+    <div class="game" id="player">
+      <h3>Player</h3>
+      <div id="pcards"></div>
+      <div class="score">
+        <p>Player Score:</p>
+        <p id="playerscore"></p>
+      </div>
+    </div>
+  </section>
+  <div class="options">
+    <input type = "button" class="gamebuttons" id="hit" value="Hit"></input>
+    <input type = "button" class="gamebuttons" id="stand" value="Stand"></input>
+    <input type = "button" class="gamebuttons" id="double" value="Double Down"></input>
+    <input type = "button" class="gamebuttons" id="split" value="Split"></input>
   </div>
-  <div class="game" id="player">
-    <h3>Player</h3>
-    <div id="pcards"></div>
-  </div>
-</div>
-<div class="gamebuttons">
-  <input type = "button" class="gamebuttons" id="deal" value="Deal"></input>
-  <input type = "button" class="gamebuttons" id="hit" value="Hit"></input>
-  <input type = "button" class="gamebuttons" id="stand" value="Stand"></input>
-  <input type = "button" class="gamebuttons" id="double" value="Double Down"></input>
-  <input type = "button" class="gamebuttons" id="split" value="Split"></input>
-</div>
-
+</main>
 </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src='js/blackjack.js'></script>

@@ -5,6 +5,10 @@ body {
   margin: 0px;
 }
 
+main {
+  position: relative;
+}
+
 header {
   background: black;
   color: #60a060;
@@ -15,12 +19,18 @@ header {
 
 h1 {
   margin: 0;
+  font-size: 2.5em;
 }
+
+h2 {
+  margin: 0;
+}
+
 h3 {
   padding: 6px;
   margin: 0;
   color: #fff;
-  background-color: rgba(100, 100, 100, 0.8);
+  background-color: rgba(100, 100, 100, 0.7);
 }
 
 .board {
@@ -28,7 +38,8 @@ h3 {
   background-size: 100%;
   width: 927px;
   height: 509px;
-  margin: 0 25% 0 30px;
+  align-items: center;
+  margin: auto;
   border: 2px solid #909090;
   box-sizing: border-box;
 }
@@ -41,37 +52,77 @@ h3 {
   width: 927px;
 }
 
-p {
-  color: blue;
-}
-
 #dcards, #pcards {
   position: absolute;
   margin-left: 350px;
   margin-top: 20px;
 }
 
+.score {
+  font-size: 2em;
+  line-height: 100%;
+  color: #FFFFFF;
+  text-align: center;
+  position: absolute;
+  margin-left: 700px;
+  margin-top: 30px;
+  height: 170px;
+  width: 220px;
+  border: 5px solid #c04444;
+  box-sizing: border-box;
+}
+
+#dealerscore, #playerscore {
+  font-size: 2.5em;
+  margin-top: 0;
+}
+
 #dealertwo, #playertwo {
   position: absolute;
   margin-left: 80px;
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+.money {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 
 
-/* #dcards, #pcards {
-
-  visibility: hidden;
+#balamt {
+  color: #DD3300;
+  background: #ccc;
+  width: 75px;
 }
-*/
 
+.bet, .balance {
+  display: inline-flex;
+  color: black;
+}
+
+.balance {
+  border: 3px solid #DD3300;
+  padding: 0 15px 0 15px;
+  margin-right: 50px;
+}
+
+#betbox {
+  width: auto;
+  font-size: 1.3em;
+  margin-left: 10px;
+}
+
+.options {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
 
 .gamebuttons {
-  text-align: left;
-  margin-left: 30px;
-}
-
-.gamebuttons input {
-  background: rgba(140, 40, 40, 0.8);;
+  background: rgba(180, 60, 60, 0.8);
+  font-size: 1.3em;
   text-align: center;
   color: white;
   padding: 10px;
