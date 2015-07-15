@@ -2,6 +2,8 @@
 WDI Project #1
 Jeremy Koulish
 
+Live at http://jkoul.github.io/blackjack/
+
 *Steps Taken:*
 - Create card objects
 - Create blackjack "table" and place elements on initial table
