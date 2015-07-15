@@ -1,12 +1,8 @@
-/* GAME AREA */
+/* GAME PAGE*/
 
 body {
   background-color: #60a060;
   margin: 0px;
-}
-
-main {
-  position: relative;
 }
 
 header {
@@ -26,6 +22,10 @@ h2 {
   margin: 0;
 }
 
+main {
+  position: relative;
+}
+
 h3 {
   padding: 6px;
   margin: 0;
@@ -33,6 +33,39 @@ h3 {
   background-color: rgba(100, 100, 100, 0.7);
 }
 
+/*betting section*/
+.money {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
+#balamt {
+  color: #DD3300;
+  background: #ccc;
+  width: 75px;
+}
+
+.bet, .balance {
+  display: inline-flex;
+  color: black;
+}
+
+.balance {
+  border: 3px solid #DD3300;
+  padding: 0 15px 0 15px;
+  margin-right: 50px;
+}
+
+#betbox {
+  width: auto;
+  font-size: 1.3em;
+  margin-left: 10px;
+}
+
+
+/*area of game play*/
 .board {
   background-image: url("http://i.imgur.com/iZrhFim.png");
   background-size: 100%;
@@ -77,6 +110,7 @@ h3 {
   margin-top: 0;
 }
 
+/*card element positions*/
 #dealertwo, #playertwo {
   position: absolute;
   margin-left: 80px;
@@ -117,36 +151,7 @@ h3 {
   visibility: hidden;
 }
 
-.money {
-  text-align: center;
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 1.7em;
-}
-
-
-#balamt {
-  color: #DD3300;
-  background: #ccc;
-  width: 75px;
-}
-
-.bet, .balance {
-  display: inline-flex;
-  color: black;
-}
-
-.balance {
-  border: 3px solid #DD3300;
-  padding: 0 15px 0 15px;
-  margin-right: 50px;
-}
-
-#betbox {
-  width: auto;
-  font-size: 1.3em;
-  margin-left: 10px;
-}
+/*buttons*/
 
 .options {
   text-align: center;
