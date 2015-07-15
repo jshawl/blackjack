@@ -1,8 +1,12 @@
-var playerScore;
-var dealerScore;
-var balance = 1000
+$(document).ready(runGame);
+
+function runGame() {
+
+playerScore = "";
+dealerScore = "";
+balance = 1000
 $("#balamt").html("$" + balance);
-var winner;
+winner = "";
 
 //combine cards into deck array
 stackMakeDeck(3);
@@ -27,14 +31,14 @@ function getValue (num) {
   };
 
 //tie blackjack values to actual deck
-  var cardValues = new Array();
+cardValues = new Array();
   for(i=0; i<cards.length;i++) {
     cardValues[i] = cards[i].rank;
   }
 
 //scores from initial deal
-var playerScore
-var dealerScore
+playerScore;
+dealerScore;
 
 //initialize game
 $("#deal").on("click",startGame);
@@ -115,7 +119,7 @@ function addPlayerCard (){
 };
 
 if(playerScore==21) {
-  dealerPlay;
+  return dealerPlay;
 };
 
 //double down
@@ -125,7 +129,9 @@ function doubleDown () {
   $("div#playerthree").css("visibility", "visible");
   playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]);
   $("#playerscore").html(playerScore);
-  dealerPlay;
+  $("#hit").off("click");
+  $("#stand").off("click");
+  return dealerPlay;
 }
 
 
@@ -156,42 +162,44 @@ function dealerPlay() {
       } else if ($("div#dealerseven").css("visibility") == "hidden") {
         $("div#dealerseven").css("visibility", "visible");
         dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]) + getValue(window.cardValues[3]) + getValue(window.cardValues[4]) + getValue(window.cardValues[5]) + getValue(window.cardValues[6]);
-      } else (alert("Error"));
-      $("#dealerscore").html(dealerScore);
-    } else getWinner;
-  };
+      } else {(alert("Error"))
+      };
+    $("#dealerscore").html(dealerScore);
+    };
+  }; return getWinner;
 };
 
-function getWinner (playerScore, dealerScore) {
-  var winner;
+function getWinner () {
   if(playerScore > dealerScore) {
     if(playerScore <= 21) {
-      winner="player";
+      return winner="player";
       alert("Player Wins!");
       balance += $("#betbox").val()*2;
       $("#balamt").html("$" + balance);
     } else {
-      winner="dealer";
+      return winner="dealer";
       alert("Dealer Wins!");
       balance += 0;
       $("#balamt").html("$" + balance);
     };
   } else if (dealerScore > playerScore) {
     if (dealerScore <= 21) {
-      winner="dealer";
+      return winner="dealer";
       alert("Dealer Wins!");
       balance += 0;
       $("#balamt").html("$" + balance);
     } else {
-      winner="player";
+      return winner="player";
       alert("Player Wins!");
       balance += $("#betbox").val()*2;
       $("#balamt").html("$" + balance);
     };
   } else if (dealerScore == playerScore) {
-    winner="push";
+    return winner="push";
     alert("Push!");
     balance += $("#betbox").val()*1;
     $("#balamt").html("$" + balance);
   };
+};
+
 };
