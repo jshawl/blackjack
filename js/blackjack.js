@@ -91,6 +91,7 @@ $("#hit").on("click", addPlayerCard);
 
 //note: enumerated getValue functions instead of using "+=" in attempt to make flex value of Ace work. It did not work, but the specificity might still be preferable .
 function addPlayerCard (){
+  $("#double").off("click");
   if(playerScore<21) {
     if ($("div#playerthree").css("visibility") == "hidden") {
       $("div#playerthree").css("visibility", "visible");
@@ -126,6 +127,7 @@ if(playerScore==21) {
 $("#double").on("click", doubleDown);
 
 function doubleDown () {
+  balance -= $("#betbox").val();
   $("div#playerthree").css("visibility", "visible");
   playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]);
   $("#playerscore").html(playerScore);
@@ -142,6 +144,7 @@ $("#stand").on("click", dealerPlay);
 function dealerPlay() {
   $("#hit").off("click");
   $("#stand").off("click");
+  $("#double").off("click");
   dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]);
   $("#dealerscore").html(dealerScore);
   $("div#dealerone").show();
