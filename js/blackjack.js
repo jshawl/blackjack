@@ -1,36 +1,47 @@
 var playerScore;
 var dealerScore;
 var balance = 1000
-$("#balamt").html("$" + balance)
+$("#balamt").html("$" + balance);
 var winner;
 
-
+//combine cards into deck array
 stackMakeDeck(3);
+//shuffle cards
 stackShuffle(3);
 
-
-
-
+//transform card "rank" into blackjack value
 function getValue (num) {
   var num;
   if( num == '2' || num == '3' || num == '4' || num == '5' ||
     num == '6' || num == '7' || num == '8' || num == '9' || num == '10') {
-      return value = parseInt(num);
+      return parseInt(num);
     } else if (num == 'J' || num == 'Q' || num == 'K') {
-      return value = 10;
+      return 10;
     } else if (num == 'A') {
-      return value = 11;
+        if(playerScore >=11) {
+          return 1;
+        } else {
+          return 11;
+        };
     } else { return value = ""};
   };
 
+//tie blackjack values to actual deck
   var cardValues = new Array();
   for(i=0; i<cards.length;i++) {
     cardValues[i] = cards[i].rank;
   }
+
+//scores from initial deal
 dealerScore = getValue(window.cardValues[1]);
 playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]);
 
-$("#deal").click(function startGame(){
+//initialize game
+$("#deal").on("click",startGame);
+
+function startGame(){
+  balance -= $("#betbox").val();
+  $("#balamt").html("$" + balance);
   $("#dcards").append("<div id='dealerone'></div>").addClass("card");
   $("div#dealerone").html(cards[0].createNode());
   $("div#dealerone").hide();
@@ -62,75 +73,87 @@ $("#deal").click(function startGame(){
   $("div#playerseven").html(cards[13].createNode()).addClass("card");
   $("#dealerscore").html(dealerScore);
   $("#playerscore").html(playerScore);
-})
+}
 
+//hit functionality
 $("#hit").on("click", addPlayerCard);
 
-var addPlayerCard = function playerPlay() {
-  console.log("test");
-  if(playerScore<=21) {
-//    if(playerScore >=11) {
-//      getValue("A") = 1;
-//    };
+function addPlayerCard (){
+  if(playerScore<21) {
     if ($("div#playerthree").css("visibility") == "hidden") {
       $("div#playerthree").css("visibility", "visible");
-      playerScore += getValue(window.cardValues[9]);
+      playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]);
     } else if ($("div#playerfour").css("visibility") == "hidden") {
       $("div#playerfour").css("visibility", "visible");
-      playerScore += getValue(window.cardValues[10]);
+      playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]) + getValue(window.cardValues[10]);
     } else if ($("div#playerfive").css("visibility") == "hidden") {
       $("div#playerfive").css("visibility", "visible");
-      playerScore += getValue(window.cardValues[11]);
+      playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]) + getValue(window.cardValues[10]) + getValue(window.cardValues[11]);
     } else if ($("div#playersix").css("visibility") == "hidden") {
       $("div#playersix").css("visibility", "visible");
-      playerScore += getValue(window.cardValues[12]);
+      playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]) + getValue(window.cardValues[10]) + getValue(window.cardValues[11]) + getValue(window.cardValues[12]);
     } else if ($("div#playerseven").css("visibility") == "hidden") {
       $("div#playerseven").css("visibility", "visible");
-      playerScore += getValue(window.cardValues[13]);
+      playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]) + getValue(window.cardValues[10]) + getValue(window.cardValues[11]) + getValue(window.cardValues[12]) + getValue(window.cardValues[13]);
     } else {alert("Error")};
   $("#playerscore").html(playerScore);
+} else if (playerScore==21) {
+  dealerPlay;
+} else {
+  alert("Player Bust!!");
+  $("#hit").off("click");
+  $("#stand").off("click");
+  winner = "dealer";
   };
 };
 
 if(playerScore>21) {
   alert("Player Bust!!");
-  $("#hit").unbind("click", addPlayerCard());
+  $("#hit").off("click");
+  $("#stand").off("click");
   winner = "dealer";
 }
 
-$("#stand").click(dealerPlay);
+//stand functionality
+$("#stand").on("click", dealerPlay);
 
-var dealerPlay = function dealerGo() {
-  dealerScore += getValue(window.cardValues[0]);
-  if(dealerScore<=16) {
-//    if(dealerScore >=11) {
-//      getValue("A") = 1;
-//    };
-    if ($("div#dealerthree").css("visibility") == "hidden") {
-      $("div#dealerthree").css("visibility", "visible");
-      dealerScore += getValue(window.cardValues[2]);
-    } else if ($("div#dealerfour").css("visibility") == "hidden") {
-      $("div#dealerrfour").css("visibility", "visible");
-      dealerScore += getValue(window.cardValues[3]);
-    } else if ($("div#dealerfive").css("visibility") == "hidden") {
-      $("div#dealerfive").css("visibility", "visible");
-      dealerScore += getValue(window.cardValues[4]);
-    } else if ($("div#dealersix").css("visibility") == "hidden") {
-      $("div#dealersix").css("visibility", "visible");
-      dealerScore += getValue(window.cardValues[5]);
-    } else if ($("div#dealerseven").css("visibility") == "hidden") {
-      $("div#dealerseven").css("visibility", "visible");
-      dealerScore += getValue(window.cardValues[6]);
+function dealerPlay() {
+  $("#hit").off("click");
+  $("#stand").off("click");
+  dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]);
+  $("#dealerscore").html(dealerScore);
+  $("div#dealerone").show();
+  for(i=2; i<=6; i++) {
+    if(dealerScore<=16){
+      if ($("div#dealerthree").css("visibility") == "hidden") {
+        $("div#dealerthree").css("visibility", "visible");
+        dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]);
+      } else if ($("div#dealerfour").css("visibility") == "hidden") {
+        $("div#dealerfour").css("visibility", "visible");
+        dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]) + getValue(window.cardValues[3]);
+      } else if ($("div#dealerfive").css("visibility") == "hidden") {
+        $("div#dealerfive").css("visibility", "visible");
+        dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]) + getValue(window.cardValues[3]) + getValue(window.cardValues[4]);
+      } else if ($("div#dealersix").css("visibility") == "hidden") {
+        $("div#dealersix").css("visibility", "visible");
+        dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]) + getValue(window.cardValues[3]) + getValue(window.cardValues[4]) + getValue(window.cardValues[5]);
+      } else if ($("div#dealerseven").css("visibility") == "hidden") {
+        $("div#dealerseven").css("visibility", "visible");
+        dealerScore = getValue(window.cardValues[0]) + getValue(window.cardValues[1]) + getValue(window.cardValues[2]) + getValue(window.cardValues[3]) + getValue(window.cardValues[4]) + getValue(window.cardValues[5]) + getValue(window.cardValues[6]);
+      } else (alert("Error"));
     };
-  } else if(dealerScore>21) {
+  };
+  if(dealerScore>21) {
+    $("#dealerscore").html(dealerScore);
     alert("Dealer Bust!!");
     return winner="player";
   } else {
+  $("#dealerscore").html(dealerScore);
     if(playerScore > dealerScore) {
       return winner="player";
     } else if (dealerScore > playerScore) {
       return winner="dealer";
-    } else {return winner="push"
+    } else {return winner="push";
     };
   };
 };
