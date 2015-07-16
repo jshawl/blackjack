@@ -1,6 +1,6 @@
 //combine cards into deck array
 stackMakeDeck(3);
-
+// remove empty white space and lines
 
 //transform card "rank" into blackjack value
 function getValue (num) {
@@ -17,11 +17,14 @@ function getValue (num) {
           return 11;
         };
     } else { return value = ""};
+    // nice! You could also create an array that represents all the possible values of a deck
+    // and check the `indexOf` `num` to get its value
   };
 
 function startGame(){
 
   balance -= $("#betbox").val();
+  // remember var ^^
   $("#balamt").html("$" + balance);
   //shuffle cards
   stackShuffle(3);
@@ -30,6 +33,7 @@ function startGame(){
     for(i=0; i<cards.length;i++) {
       cardValues[i] = cards[i].rank;
     }
+    // remember to indent nested code blocks accordingly.
 
     //dealer cards
     $("#dcards").append("<div id='dealerone'></div>").addClass("card");
@@ -47,6 +51,15 @@ function startGame(){
     $("#dcards").append("<div class='card, extracards' id='dealerseven'></div>");
     $("div#dealerseven").html(cards[6].createNode())
     $("div#dealerone").hide();
+    // the above seems very repetitive. Maybe you can use an object and a for..in loop to generate this code:
+    // var data = {
+    //   one: 0,
+    //   two: 1,
+    //   three: 2
+    // }
+    // for(var datum in data){
+    //   console.log("div#dealer" + datum)...
+    // }
 
     //player cards
     $("#pcards").append("<div class='card' id='playerone'></div>");
@@ -72,7 +85,7 @@ function startGame(){
 
   //note: enumerated getValue functions instead of using "+=" in attempt to make flex value of Ace work. It did not work, but the specificity might still be preferable .
 function addPlayerCard (){
-  $("#double").off("click");
+  $("#double").off("click"); //nice use of .off!
   if(playerScore<21) {
     if ($("div#playerthree").css("visibility") == "hidden") {
       $("div#playerthree").css("visibility", "visible");
@@ -89,6 +102,9 @@ function addPlayerCard (){
     } else if ($("div#playerseven").css("visibility") == "hidden") {
       $("div#playerseven").css("visibility", "visible");
       playerScore = getValue(window.cardValues[7]) + getValue(window.cardValues[8]) + getValue(window.cardValues[9]) + getValue(window.cardValues[10]) + getValue(window.cardValues[11]) + getValue(window.cardValues[12]) + getValue(window.cardValues[13]);
+      // for each of the above conditions, I recommend toggling classes instead of manipulating inline styles.
+      // this will allow you to separate your concerns by keeping behavior in JS files and styles in
+      // CSS files.
     } else {alert("Error")};
   $("#playerscore").html(playerScore);
 } else if (playerScore==21) {
@@ -178,12 +194,13 @@ function getWinner () {
   };
 };
 
-$(document).ready(runGame);
+$(document).ready(runGame); // nice! this allows you to easily reset if you wanted to add that feature.
 
 function runGame() {
 
 playerScore = "";
 dealerScore = "";
+// I'm having trouble remembering which variables are global and which aren't. remember to use var.
 balance = 1000
 $("#balamt").html("$" + balance);
 winner = "";
@@ -209,3 +226,10 @@ $("#double").on("click", doubleDown);
 $("#stand").on("click", dealerPlay);
 
 };
+
+// Overall comments
+// Excellent job on Project 1!!!
+// I gave you does not meet expectations for code quality due to code organization and formatting
+// as well as several missing `var`s.
+// In the future, think about how you can decouple your application logic from the view that displays that data.
+// i.e. have functions for processing the data and separate functions for displaying that data.

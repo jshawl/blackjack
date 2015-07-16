@@ -48,7 +48,7 @@ h3 {
 }
 
 .bet, .balance {
-  display: inline-flex;
+  display: inline-flex; /* AWESOME to see flexbox usage here!!! */
   color: black;
 }
 
@@ -67,7 +67,7 @@ h3 {
 
 /*area of game play*/
 .board {
-  background-image: url("http://i.imgur.com/iZrhFim.png");
+  background-image: url("http://i.imgur.com/iZrhFim.png"); /* remember to download this image locally in case this link goes down */
   background-size: 100%;
   width: 927px;
   height: 509px;
@@ -83,7 +83,7 @@ h3 {
   text-align: center;
   position: relative;
   height: 250px;
-  width: 927px;
+  width: 927px; /* avoid hardcoding heights when possible.*/
 }
 
 #dealerscore, #playerscore {
@@ -134,6 +134,8 @@ h3 {
   margin-left: 310px;
   margin-top: 50px;
 }
+
+/* Each of the above has position:absolute. You can comma separate selectors to DRY up your code. */
 
 .extracards {
   visibility: hidden;
@@ -236,3 +238,5 @@ h3 {
 .spotC3 { position: absolute; left: 2.50em; top: 2.0em; }
 .spotC4 { position: absolute; left: 2.50em; top: 2.5em; }
 .spotC5 { position: absolute; left: 2.50em; top: 3.5em; }
+
+/* I am very impressed with your CSS! Awesome job!! */
